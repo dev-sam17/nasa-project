@@ -21,13 +21,18 @@ function loadPlanetsData() {
             console.log(err)
             reject(err);
         }).on('end', () => {
+            // console.log(habitablePlanets)
             resolve()
         })
     })
 }
 
+function getAllPlanets() {
+    return habitablePlanets
+}
+
 
 module.exports = {
     loadPlanetsData,
-    planets: habitablePlanets
+    getAllPlanets,
 }

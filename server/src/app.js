@@ -9,7 +9,7 @@ const launchesRouter = require('./routes/launches/launches.router')
 const app = express()
 
 app.use(cors({
-    origin: 'https://3000-devsam17-nasaproject-tcxulcqyayl.ws-us96b.gitpod.io'
+    "origin": 'https://8000-devsam17-nasaproject-tcxulcqyayl.ws-us97.gitpod.io'
 }))
 app.use(morgan("combined"))
 

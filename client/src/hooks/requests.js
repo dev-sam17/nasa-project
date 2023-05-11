@@ -1,4 +1,4 @@
-const API_URL = 'https://8000-devsam17-nasaproject-tcxulcqyayl.ws-us96b.gitpod.io'
+const API_URL = 'https://8000-devsam17-nasaproject-tcxulcqyayl.ws-us97.gitpod.io'
 
 // Load planets and return as JSON.
 async function httpGetPlanets() {

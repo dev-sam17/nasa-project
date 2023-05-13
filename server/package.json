@@ -6,18 +6,20 @@
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
-    "watch": "cd src && nodemon server.js",
-    "cluster": "pm2 start src/server.js -i max"
+    "watch": "nodemon server.js",
+    "cluster": "pm2 start server.js -i max"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "jest" : {
+  "jest": {
     "testEnvironment": "node"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "cors": "^2.8.5",
     "csv-parse": "^5.3.10",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.1.1",
     "pm2": "^5.3.0"

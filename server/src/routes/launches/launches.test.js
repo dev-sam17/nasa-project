@@ -1,6 +1,6 @@
 const request = require('supertest')
 const app = require('../../app')
-const { mongoConnect, mongoDisconnect } = require('../../services/mongo')
+const { mongoConnect } = require('../../services/mongo')
 
 describe('Launches Api', () => {
     beforeAll(async () => {
@@ -9,7 +9,7 @@ describe('Launches Api', () => {
 
     describe('Test GET /launches', () => {
         test('it should respond with 200 success', async () => {
-            const response = await request(app).get('/launches').expect('Content-Type', /json/).expect(200)
+            const response = await request(app).get('/v1/launches').expect('Content-Type', /json/).expect(200)
         })
     })
     
@@ -37,7 +37,7 @@ describe('Launches Api', () => {
     
         test('it should respond with 201 success', async () => {
     
-            const response = await request(app).post('/launches').send(completeLaunchData).expect('Content-Type', /json/).expect(201)
+            const response = await request(app).post('/v1/launches').send(completeLaunchData).expect('Content-Type', /json/).expect(201)
     
             const requestDate = new Date(completeLaunchData.launchDate).valueOf()
             const responseDate = new Date(response.body.launchDate).valueOf()
@@ -47,14 +47,14 @@ describe('Launches Api', () => {
         })
     
         test('it should catch missing required properties', async () => {
-            const response = await request(app).post('/launches').send(launchDataWithoutDate).expect('Content-Type', /json/).expect(400)
+            const response = await request(app).post('/v1/launches').send(launchDataWithoutDate).expect('Content-Type', /json/).expect(400)
     
             expect(response.body).toStrictEqual({
                 error: 'Missing required launch property',
             })
         })
         test('it should catch invalid date property', async () => {
-            const response = await request(app).post('/launches').send(launchDataWithInvalidDate).expect('Content-Type', /json/).expect(400)
+            const response = await request(app).post('/v1/launches').send(launchDataWithInvalidDate).expect('Content-Type', /json/).expect(400)
     
             expect(response.body).toStrictEqual({
                 error: 'Invalid launch date'

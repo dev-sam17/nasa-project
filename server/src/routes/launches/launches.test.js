@@ -1,4 +1,7 @@
 const request = require('supertest')
+
+require('dotenv').config({ path: './.env'})
+
 const app = require('../../app')
 const { mongoConnect } = require('../../services/mongo')
 

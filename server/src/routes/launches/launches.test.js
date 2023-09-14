@@ -5,13 +5,16 @@ require('dotenv').config({ path: './.env'})
 const app = require('../../app')
 const { mongoConnect, mongoDisconnect } = require('../../services/mongo')
 
+const { loadPlanetsData }  = require('../../models/planets.models')
+
 describe('Launches Api', () => {
     beforeAll(async () => {
         await mongoConnect()
     })
 
     afterAll(async () => {
-        await mongoDisconnect()
+        await mongoDisconnect();
+        await loadPlanetsData();
     })
 
     describe('Test GET /launches', () => {

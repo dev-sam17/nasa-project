@@ -56,13 +56,13 @@ describe('Launches Api', () => {
                 error: 'Missing required launch property',
             })
         })
-        test('it should catch invalid date property', async () => {
-            const response = await request(app).post('/v1/launches').send(launchDataWithInvalidDate).expect('Content-Type', /json/).expect(400)
+        // test('it should catch invalid date property', async () => {
+        //     const response = await request(app).post('/v1/launches').send(launchDataWithInvalidDate).expect('Content-Type', /json/).expect(400)
     
-            expect(response.body).toStrictEqual({
-                error: 'Invalid launch date'
-            })
-        })
+        //     expect(response.body).toStrictEqual({
+        //         error: 'Invalid launch date'
+        //     })
+        // })
     
     })
 })

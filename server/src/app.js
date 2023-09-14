@@ -8,7 +8,7 @@ const api = require('./routes/api')
 const app = express()
 
 app.use(cors({
-    "origin": 'https://8000-devsam17-nasaproject-tcxulcqyayl.ws-us97.gitpod.io'
+    "origin": 'http://localhost:8000',
 }))
 app.use(morgan("combined"))
 

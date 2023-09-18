@@ -16,6 +16,6 @@ jobs:
     - name: Pull docker image
       run: sudo docker pull samthemaverick/nasa-project1:latest
     - name: Delete the old Docker container
-      run: docker rm -f nasa-project1-container || true
+      run: sudo docker rm -f nasa-project1-container || true
     - name: Run Docker container
-      run: docker run -d -p 8000:8000 --restart=always --name nasa-project1-container samthemaverick/nasaproject1
+      run: sudo docker run -d -p 8000:8000 --restart=always --name nasa-project1-container samthemaverick/nasaproject1

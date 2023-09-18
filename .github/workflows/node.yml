@@ -33,21 +33,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to AWS EC2 instance
-        uses: appleboy/ssh-action@master
+        uses: GPTED/SSH-My-Action@0.1
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            # Pull the latest Docker image
-            docker pull samthemaverick/nasa-project
-
-            # Stop and remove the existing container
-            docker stop samthemaverick/nasa-project || true
-            docker rm samthemaverick/nasa-project || true
-
-            # Run the new Docker container
-            docker run -d --restart=always --name nasa-project -p 8000:8000 samthemaverick/nasa-project
+          HOST: ${{ secrets.EC2_HOST }}
+          PORT: ${{ secrets.SSH_PORT }}
+          USER: ${{ secrets.EC2_USERNAME }}
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          CMD: |
+            # trying to log in using ssh 
+            echo "Successfully logged in using SSH in Github actions";
+            
+            ls -la
         
 
       

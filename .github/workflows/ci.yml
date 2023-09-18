@@ -36,7 +36,7 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build Docker Image
-        run: docker build -t nasa-project .
+        run: docker build -t nasa-project ../../
       - name: Push Docker Image
         run: docker push samthemaverick/nasa-project:1.0
         

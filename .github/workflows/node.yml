@@ -27,6 +27,27 @@ jobs:
       - run: npm install
       - run: npm run build --prefix client
       - run: npm test
+    
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to AWS EC2 instance
+      uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Pull the latest Docker image
+            docker pull samthemaverick/nasa-project
+
+            # Stop and remove the existing container
+            docker stop samthemaverick/nasa-project || true
+            docker rm samthemaverick/nasa-project || true
+
+            # Run the new Docker container
+            docker run -d --restart=always --name nasa-project -p 8000:8000 your-docker-image:tag
         
 
       

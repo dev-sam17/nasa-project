@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to AWS EC2 instance
-      uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
@@ -47,7 +47,7 @@ jobs:
             docker rm samthemaverick/nasa-project || true
 
             # Run the new Docker container
-            docker run -d --restart=always --name nasa-project -p 8000:8000 your-docker-image:tag
+            docker run -d --restart=always --name nasa-project -p 8000:8000 samthemaverick/nasa-project
         
 
       

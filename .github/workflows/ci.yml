@@ -11,7 +11,7 @@ jobs:
       MONGO_URL: mongodb://localhost/nasa
     strategy:
       matrix:
-        node-version: [ 17.x, 18.x]
+        node-version: [ 18.x]
         mongodb-version: [ 4.4 ]
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +36,7 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build Docker Image
-        run: docker build -t nasa-project
+        run: docker build -t nasa-project .
       - name: Push Docker Image
         run: docker push samthemaverick/nasa-project:1.0
         

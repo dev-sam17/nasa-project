@@ -10,10 +10,7 @@ RUN npm run install-client --omit=dev
 COPY server/ server/
 RUN npm run install-server --omit=dev
 
-# COPY client/ client/
 RUN npm run build --prefix client
-
-# COPY server/ server/
 
 USER node
 

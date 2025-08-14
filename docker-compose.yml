@@ -1,4 +1,4 @@
-version: '4.1'
+version: "4.1"
 
 services:
   # NASA API service
@@ -9,9 +9,7 @@ services:
     container_name: nasa-api
     restart: always
     ports:
-      - "8000:8000"
-    environment:
-      - PORT=8000
+      - "3400:8000"
     networks:
       - nasa-network
 

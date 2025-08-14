@@ -7,7 +7,7 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "watch": "nodemon server.js",
-    "cluster": "pm2 start server.js -i max"
+    "cluster": "pm2 start server.js -i 4 -f"
   },
   "keywords": [],
   "author": "",
